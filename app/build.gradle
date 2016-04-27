@@ -5,7 +5,7 @@ android {
         config {
             keyAlias 'testkey'
             keyPassword '1eurisko'
-            storeFile file('testkeystore.jks')
+            storeFile file('../testkeystore.jks')
             storePassword '1eurisko'
         }
     }
@@ -22,6 +22,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
 }
