@@ -5,7 +5,7 @@ android {
         config {
             keyAlias 'testkey'
             keyPassword '1eurisko'
-            storeFile file('/Users/joeabouassi/AndroidStudioProjects/TestAppGithub/testkeystore.jks')
+            storeFile file('testkeystore.jks')
             storePassword '1eurisko'
         }
     }
