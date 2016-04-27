@@ -36,7 +36,6 @@ captures/
 .project
 .classpath
 .DS_Store
-local.properties
 *.iml
 # gradlew comment when using gradle wrapper
 # gradlew.bat comment when using gradle wrapper
