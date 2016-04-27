@@ -1,9 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'testkey'
+            keyPassword '1eurisko'
+            storeFile file('/Users/joeabouassi/AndroidStudioProjects/TestAppGithub/testkeystore.jks')
+            storePassword '1eurisko'
+        }
+    }
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
-
     defaultConfig {
         applicationId "com.eurisko.testappgithub"
         minSdkVersion 15
