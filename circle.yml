@@ -33,4 +33,4 @@ deployment:
     develop:
         branch: develop
         commands:
-            - ./gradlew assemble
+            - ./gradlew assembleRelease
