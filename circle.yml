@@ -31,6 +31,6 @@ test:
 
 deployment:
     develop:
-        branch: develop
+        branch: master
         commands:
             - ./gradlew assembleRelease
