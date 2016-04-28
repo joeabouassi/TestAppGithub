@@ -1,4 +1,8 @@
 machine:
+  java:
+    version: openjdk7
+  ruby:
+    version: 2.3.1
   environment:
     PATH: "~/TestAppGithub/gradle-2.10/bin:$PATH"
     TERM: "dumb"
@@ -36,8 +40,9 @@ test:
     - cp -r app/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
     - adb install $CIRCLE_ARTIFACTS/outputs/apk/app-release.apk
 
-#deployment:
-    #develop:
-        #branch: master
-        #commands:
+deployment:
+    develop:
+        branch: master
+        commands:
             #- ./gradlew assembleRelease
+            - bundle exec fastlane deploy
