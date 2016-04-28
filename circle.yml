@@ -46,7 +46,6 @@ deployment:
     develop:
         branch: master
         commands:
-            #- ./gradlew assembleRelease
             #- bundle exec fastlane deploy
             #- supply init
             - ./gradlew publishApkRelease
