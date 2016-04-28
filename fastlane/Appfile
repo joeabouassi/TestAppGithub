@@ -1,0 +1,2 @@
+json_key_file "/Users/joeabouassi/AndroidStudioProjects/TestAppGithub/keys.json" # Path to the json secret file - Follow https://github.com/fastlane/supply#setup to get one
+package_name "com.eurisko.testappgithub" # e.g. com.krausefx.app
