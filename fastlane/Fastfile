@@ -13,50 +13,33 @@
 # Update this, if you use features of a newer version
 fastlane_version "1.82.0"
 
-default_platform :android
-
-platform :android do
-  before_all do
-    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
-  end
-
-  desc "Runs all the tests"
-  lane :test do
-    gradle(task: "test")
-  end
-
-  desc "Submit a new Beta Build to Crashlytics Beta"
-  lane :beta do
-    gradle(task: "assembleRelease")
-    crashlytics
-
-    # sh "your_script.sh"
-    # You can also use other beta testing services here
-  end
-
-  desc "Deploy a new version to the Google Play"
-  lane :deploy do
-    gradle(task: "assembleRelease")
-    supply
-  end
-
-  # You can define as many lanes as you want
-
-  after_all do |lane|
-    # This block is called, only if the executed lane was successful
-
-    # slack(
-    #   message: "Successfully deployed new App Update."
-    # )
-  end
-
-  error do |lane, exception|
-    # slack(
-    #   message: exception.message,
-    #   success: false
-    # )
-  end
+lane :deploy do 
+  #Generate key files 
+  dir = “./fastlane/certs” 
+  add_key( 
+    keystore_path: File.join(dir, “release.keystore”),
+    play_p12_path: File.join(dir, “play.p12”)
+  )
+  #Build 
+  gradle(task: “assembleRelease”)
+  #Upload to Google Play 
+  supply( track: “alpha” ) 
+  #Delete key files
+  remove_key 
 end
+
+module Fastlane
+  module Actions
+    class AddKeyAction < Action
+      def self.run(params)
+        keystore_path = params[:keystore_path]
+        play_p12_path = params[:play_p12_path]
+        encryption_secret = ENV["ENCRYPTION_SECRET"]
+        sh "openssl aes-256-cbc -k #{encryption_secret} -in #{keystore_path}.enc -d -a -out #{keystore_path}"
+        sh "openssl aes-256-cbc -k #{encryption_secret} -in #{play_p12_path}.enc -d -a -out #{play_p12_path}"
+      end
+    end
+  end end module Fastlane module Actions class RemoveKeyAction < Action def self.run(params) sh "rm -rf fastlane/certs" end end end end
 
 
 # More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md
