@@ -48,3 +48,4 @@ deployment:
         branch: master
         commands:
             #- ./gradlew assembleRelease
+            - bundle exec fastlane deploy
