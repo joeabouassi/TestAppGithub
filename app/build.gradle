@@ -28,6 +28,11 @@ android {
     }
 }
 
+play {
+    jsonFile = file('../keys.json')
+    track = "${track}"
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
