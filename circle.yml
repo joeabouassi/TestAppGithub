@@ -19,8 +19,9 @@ dependencies:
     - echo y | android update sdk --no-ui --all --filter extra-google-m2repository
     - echo y | android update sdk --no-ui --all --filter android-23
     - echo y | android update sdk --no-ui --all --filter build-tools-23.0.2
-    - gem install fastlane --verbose
-    - gem install supply --verbose
+  override:
+    - sudo gem install fastlane
+    - sudo gem install supply
 
 test:
   override:
@@ -47,8 +48,3 @@ deployment:
         branch: master
         commands:
             #- ./gradlew assembleRelease
-            - fastlane action gradle(task: "assembleRelease")
-            #Screenshots
-            - fastlane action screengrab(locales: ['en-US'],clear_previous_screenshots: true,app_apk_path: "$CIRCLE_ARTIFACTS/outputs/apk/app-release.apk")
-            #Upload to Google Play 
-            - fastlane action supply(track: "alpha") 
