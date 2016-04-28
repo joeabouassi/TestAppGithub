@@ -8,7 +8,6 @@ machine:
     TERM: "dumb"
     ADB_INSTALL_TIMEOUT: "10"
     GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"'
-    REALLY_GEM_UPDATE_SYSTEM: "true"
 
 dependencies:
   pre:
@@ -20,10 +19,8 @@ dependencies:
     - echo y | android update sdk --no-ui --all --filter extra-google-m2repository
     - echo y | android update sdk --no-ui --all --filter android-23
     - echo y | android update sdk --no-ui --all --filter build-tools-23.0.2
-  override:
-    - sudo gem update --system
-    - sudo gem install fastlane
-    - sudo gem install supply
+    - gem install fastlane
+    - gem install supply
 
 test:
   override:
@@ -50,4 +47,5 @@ deployment:
         branch: master
         commands:
             #- ./gradlew assembleRelease
-            - bundle exec fastlane deploy
+            #- bundle exec fastlane deploy
+            - supply init
