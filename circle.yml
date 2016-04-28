@@ -49,4 +49,3 @@ deployment:
             #- bundle exec fastlane deploy
             #- supply init
             - ./gradlew publishApkRelease
-            - Dorg.gradle.project.track=production
