@@ -20,6 +20,7 @@ dependencies:
     - echo y | android update sdk --no-ui --all --filter android-23
     - echo y | android update sdk --no-ui --all --filter build-tools-23.0.2
   override:
+    - sudo gem update --system
     - sudo gem install fastlane
     - sudo gem install supply
 
