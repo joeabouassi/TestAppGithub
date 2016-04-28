@@ -33,7 +33,7 @@ lane :deploy do
   #Upload to Google Play 
   supply( track: “alpha” ) 
   #Delete key files
-  remove_key 
+  #remove_key 
 end
 
 #module Fastlane
