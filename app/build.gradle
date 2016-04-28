@@ -4,10 +4,10 @@ apply plugin: 'com.github.triplet.play'
 android {
     signingConfigs {
         config {
-            keyAlias 'testkey'
-            keyPassword '1eurisko'
+            keyAlias System.getenv('KEY_ALIAS')
+            keyPassword System.getenv('KEY_PASS')
             storeFile file('../testkeystore.jks')
-            storePassword '1eurisko'
+            storePassword System.getenv('STORE_PASS')
         }
     }
     compileSdkVersion 23
