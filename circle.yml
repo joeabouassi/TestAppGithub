@@ -48,4 +48,6 @@ deployment:
         commands:
             #- ./gradlew assembleRelease
             #- bundle exec fastlane deploy
-            - supply init
+            #- supply init
+            - ./gradlew publishApkRelease
+            - Dorg.gradle.project.track=production
