@@ -30,7 +30,7 @@ android {
 
 play {
     jsonFile = file('../keys.json')
-    track = "${track}"
+    track = "production"
 }
 
 dependencies {
