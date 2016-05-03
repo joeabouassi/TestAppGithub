@@ -21,6 +21,7 @@ dependencies:
     - echo y | android update sdk --no-ui --all --filter build-tools-23.0.2
     #- gem install fastlane
     #- gem install supply
+    - gem install bundler
   override:
     - bundle install
 
