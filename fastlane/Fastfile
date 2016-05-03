@@ -3,6 +3,8 @@
 # All available actions: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Actions.md
 # can also be listed using the `fastlane actions` command
 
+require 'fileutils'
+
 # Change the syntax highlighting to Ruby
 # All lines starting with a # are ignored when running `fastlane`
 
@@ -14,6 +16,7 @@
 fastlane_version "1.83.0"
 
 lane :deploy do 
+  puts "current: " + Dir.pwd
   #Generate key files 
   #dir = “./fastlane/certs” 
   #add_key( 
@@ -21,14 +24,16 @@ lane :deploy do
     #play_p12_path: File.join(dir, “play.p12”)
   #)
   #Build 
-  gradle(task: "assembleRelease")
+  #gradle(task: "assembleRelease")
   
   #Screenshots
   screengrab(
+    verbose: true,
     locales: ['en-US'],
     clear_previous_screenshots: true,
     app_apk_path: '/home/ubuntu/TestAppGithub/app/build/outputs/apk/app-debug.apk',
-    tests_apk_path: '/home/ubuntu/TestAppGithub/app/build/outputs/apk/app-debug-unaligned.apk'
+    tests_apk_path: '/home/ubuntu/TestAppGithub/app/build/outputs/apk/app-debug-unaligned.apk',
+    output_directory: '/home/ubuntu/TestAppGithub/fastlane/metadata/android'
   )
   
   #Upload to Google Play 
