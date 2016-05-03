@@ -27,7 +27,10 @@ dependencies:
     - bundle init
     - echo "gem 'fastlane', '1.83.0'" >> Gemfile
     - echo "gem 'supply', '0.6.2'" >> Gemfile
-    - bundle install
+    - echo "gem 'screengrab', '0.3.2'" >> Gemfile
+    - bundle install --path='./gems/'
+    - pwd
+    - ls
 
 test:
   override:
