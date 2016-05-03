@@ -27,7 +27,8 @@ lane :deploy do
   screengrab(
     locales: ['en-US'],
     clear_previous_screenshots: true,
-    app_apk_path: "/home/ubuntu/TestAppGithub/app/build/outputs/apk/app-release.apk"
+    app_apk_path: '/home/ubuntu/TestAppGithub/app/build/outputs/apk/app-debug.apk',
+    tests_apk_path: '/home/ubuntu/TestAppGithub/app/build/outputs/apk/app-debug-unaligned.apk'
   )
   
   #Upload to Google Play 
