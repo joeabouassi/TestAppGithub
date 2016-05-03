@@ -37,7 +37,10 @@ lane :deploy do
   )
   
   #Upload to Google Play 
-  supply( track: "production" ) 
+  supply( 
+    track: "production",
+    apk: '/home/ubuntu/TestAppGithub/app/build/outputs/apk/app-release.apk'
+  ) 
   #Delete key files
   #remove_key 
 end
