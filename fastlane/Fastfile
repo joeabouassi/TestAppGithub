@@ -27,7 +27,7 @@ lane :deploy do
   screengrab(
     locales: ['en-US'],
     clear_previous_screenshots: true,
-    app_apk_path: 'build/outputs/apk/app-release.apk'
+    app_apk_path: :GRADLE_APK_OUTPUT_PATH
   )
   
   #Upload to Google Play 
