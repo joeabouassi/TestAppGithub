@@ -28,7 +28,8 @@ dependencies:
     - echo "gem 'fastlane', '1.83.0'" >> Gemfile
     - echo "gem 'supply', '0.6.2'" >> Gemfile
     - echo "gem 'screengrab', '0.3.2'" >> Gemfile
-    - bundle install --deployment
+    - bundle install --path ./gems
+    - bundle install --path ./gems --deployment
 
 test:
   override:
