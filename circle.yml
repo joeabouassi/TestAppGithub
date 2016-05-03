@@ -24,6 +24,7 @@ dependencies:
     - gem install supply
   override:
     - bundle init
+    - cat Gemfile
     - bundle install
 
 test:
