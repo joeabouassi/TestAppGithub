@@ -24,7 +24,7 @@ dependencies:
     - gem install supply
   override:
     - bundle init
-    - cat Gemfile
+    - echo "gem 'fastlane', '1.83.0'" >> Gemfile
     - bundle install
 
 test:
