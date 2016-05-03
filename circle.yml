@@ -29,8 +29,6 @@ dependencies:
     - echo "gem 'supply', '0.6.2'" >> Gemfile
     - echo "gem 'screengrab', '0.3.2'" >> Gemfile
     - bundle install --path='./gems/'
-    - pwd
-    - ls
 
 test:
   override:
@@ -52,12 +50,12 @@ test:
     - cp -r app/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
     #- adb install $CIRCLE_ARTIFACTS/outputs/apk/app-debug.apk
     #- adb shell am start -n "com.eurisko.testappgithub/com.eurisko.testappgithub.MainActivity" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER
-    - screengrab --clear_previous_screenshots true --app_apk_path $CIRCLE_ARTIFACTS/outputs/apk/app-debug.apk --tests_apk_path $CIRCLE_ARTIFACTS/outputs/apk/app-debug-unaligned.apk
+    #- screengrab --clear_previous_screenshots true --app_apk_path $CIRCLE_ARTIFACTS/outputs/apk/app-debug.apk --tests_apk_path $CIRCLE_ARTIFACTS/outputs/apk/app-debug-unaligned.apk
 
 deployment:
     develop:
         branch: master
         commands:
-            #- bundle exec fastlane deploy
-            - supply init
+            - bundle exec fastlane deploy
+            #- supply init
             #- ./gradlew publishApkRelease
