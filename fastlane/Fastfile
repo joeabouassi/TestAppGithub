@@ -21,7 +21,7 @@ lane :deploy do
     #play_p12_path: File.join(dir, “play.p12”)
   #)
   #Build 
-  gradle(task: “assembleRelease”)
+  gradle(task: "assembleRelease")
   
   #Screenshots
   screengrab(
@@ -31,7 +31,7 @@ lane :deploy do
   )
   
   #Upload to Google Play 
-  supply( track: “alpha” ) 
+  supply( track: "production" ) 
   #Delete key files
   #remove_key 
 end
