@@ -19,9 +19,9 @@ dependencies:
     - echo y | android update sdk --no-ui --all --filter extra-google-m2repository
     - echo y | android update sdk --no-ui --all --filter android-23
     - echo y | android update sdk --no-ui --all --filter build-tools-23.0.2
-    #- gem install fastlane
-    #- gem install supply
     - gem install bundler
+    - gem install fastlane
+    - gem install supply
   override:
     - bundle init
     - bundle install
@@ -50,6 +50,6 @@ deployment:
     develop:
         branch: master
         commands:
-            #- bundle exec fastlane deploy
+            - bundle exec fastlane deploy
             #- supply init
-            - ./gradlew publishApkRelease
+            #- ./gradlew publishApkRelease
