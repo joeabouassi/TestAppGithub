@@ -23,6 +23,7 @@ dependencies:
     #- gem install supply
     - gem install bundler
   override:
+    - bundle init
     - bundle install
 
 test:
