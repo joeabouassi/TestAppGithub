@@ -27,14 +27,14 @@ lane :deploy do
   #gradle(task: "assembleRelease")
   
   #Screenshots
-  #screengrab(
-    #verbose: true,
-    #locales: ['en-US'],
-    #clear_previous_screenshots: true,
-    #app_apk_path: '/home/ubuntu/TestAppGithub/app/build/outputs/apk/app-debug.apk',
-    #tests_apk_path: '/home/ubuntu/TestAppGithub/app/build/outputs/apk/app-debug-unaligned.apk',
-    #output_directory: '/home/ubuntu/TestAppGithub/fastlane/metadata/android'
-  #)
+  screengrab(
+    verbose: true,
+    locales: ['en-US'],
+    clear_previous_screenshots: true,
+    app_apk_path: '/home/ubuntu/TestAppGithub/app/build/outputs/apk/app-debug.apk',
+    tests_apk_path: '/home/ubuntu/TestAppGithub/app/build/outputs/apk/app-debug-unaligned.apk',
+    output_directory: '/home/ubuntu/TestAppGithub/fastlane/metadata/android'
+  )
   
   #Upload to Google Play 
   supply( 
