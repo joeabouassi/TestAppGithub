@@ -2,6 +2,7 @@
 
 function getAndroidSDK {
   export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH"
+  export PATH="/home/ubuntu/.rvm/gems/ruby-2.3.1/bin:$PATH"
 
   DEPS="$ANDROID_HOME/installed-dependencies"
 
