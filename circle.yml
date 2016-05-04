@@ -4,6 +4,7 @@ machine:
   ruby:
     version: 2.3.1
   environment:
+    ANDROID_HOME: /usr/local/android-sdk-linux
     PATH: "~/TestAppGithub/gradle-2.10/bin:$PATH"
     TERM: "dumb"
     ADB_INSTALL_TIMEOUT: "10"
@@ -12,13 +13,14 @@ machine:
 dependencies:
   pre:
     - wget "https://services.gradle.org/distributions/gradle-2.10-bin.zip"; unzip gradle-2.10-bin.zip
-    - echo y | android update sdk --no-ui --all --filter tool
-    - echo y | android update sdk --no-ui --all --filter extra-android-m2repository
-    - echo y | android update sdk --no-ui --all --filter extra-android-support
-    - echo y | android update sdk --no-ui --all --filter extra-google-google_play_services
-    - echo y | android update sdk --no-ui --all --filter extra-google-m2repository
-    - echo y | android update sdk --no-ui --all --filter android-23
-    - echo y | android update sdk --no-ui --all --filter build-tools-23.0.2
+    #- echo y | android update sdk --no-ui --all --filter tool
+    #- echo y | android update sdk --no-ui --all --filter extra-android-m2repository
+    #- echo y | android update sdk --no-ui --all --filter extra-android-support
+    #- echo y | android update sdk --no-ui --all --filter extra-google-google_play_services
+    #- echo y | android update sdk --no-ui --all --filter extra-google-m2repository
+    #- echo y | android update sdk --no-ui --all --filter android-23
+    #- echo y | android update sdk --no-ui --all --filter build-tools-23.0.2
+    - source scripts/environmentSetup.sh && getAndroidSDK
     - gem install bundler
     - gem install fastlane
     - gem install supply
@@ -32,18 +34,28 @@ dependencies:
     - bundle install --path ./gems --deployment
 
 test:
-  override:
-    # start the emulator
-    - emulator -avd circleci-android22 -no-audio -no-window:
+  pre:
+    - $ANDROID_HOME/tools/emulator -avd testAVD -no-skin -no-audio -no-window:
         background: true
         parallel: true
+    - ./gradlew assembleDebug:
+        timeout: 360
+    - source scripts/environmentSetup.sh && waitForAVD
+  override:
+    - ./gradlew connectedAndroidTest --info:
+        timeout: 360
+  #override:
+    # start the emulator
+    #- emulator -avd circleci-android22 -no-audio -no-window:
+        #background: true
+        #parallel: true
     # wait for it to have booted
-    - circle-android wait-for-boot
+    #- circle-android wait-for-boot
     # unlock the emulator screen
-    - sleep 30
-    - adb shell input keyevent 82
+    #- sleep 30
+    #- adb shell input keyevent 82
     # run tests  against the emulator.
-    - ./gradlew connectedAndroidTest -PdisablePreDex
+    #- ./gradlew connectedAndroidTest -PdisablePreDex
     - ./gradlew assembleRelease
     # copy the build outputs to artifacts
     - cp -r app/build/outputs $CIRCLE_ARTIFACTS
