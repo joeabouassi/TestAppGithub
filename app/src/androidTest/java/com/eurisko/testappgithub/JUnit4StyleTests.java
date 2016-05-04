@@ -27,7 +27,6 @@ public class JUnit4StyleTests {
     @Test
     public void testTakeMoreScreenshots() {
         Screengrab.screenshot("mainActivity");
-
         onView(withId(R.id.hello)).check(matches(isDisplayed()));
     }
 }
