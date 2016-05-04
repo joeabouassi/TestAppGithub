@@ -22,7 +22,7 @@ dependencies:
     #- echo y | android update sdk --no-ui --all --filter build-tools-23.0.2
     - source scripts/environmentSetup.sh && getAndroidSDK
     - gem install bundler
-    - sudo gem install fastlane
+    - gem install fastlane
     #- sudo gem install supply
     #- sudo gem install screengrab
   override:
