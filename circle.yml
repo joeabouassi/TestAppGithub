@@ -22,14 +22,14 @@ dependencies:
     #- echo y | android update sdk --no-ui --all --filter build-tools-23.0.2
     - source scripts/environmentSetup.sh && getAndroidSDK
     - gem install bundler
-    - gem install fastlane
-    - gem install supply
-    - gem install screengrab
+    - sudo gem install fastlane
+    #- sudo gem install supply
+    #- sudo gem install screengrab
   override:
     - bundle init
-    - echo "gem 'fastlane', '1.83.0'" >> Gemfile
-    - echo "gem 'supply', '0.6.2'" >> Gemfile
-    - echo "gem 'screengrab', '0.3.2'" >> Gemfile
+    - echo "gem 'fastlane', '1.84.0'" >> Gemfile
+    #- echo "gem 'supply', '0.6.2'" >> Gemfile
+    #- echo "gem 'screengrab', '0.3.2'" >> Gemfile
     - bundle install --path ./gems
     - bundle install --path ./gems --deployment
 
