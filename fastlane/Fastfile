@@ -13,7 +13,7 @@ require 'fileutils'
 
 # This is the minimum version number required.
 # Update this, if you use features of a newer version
-fastlane_version "1.83.0"
+fastlane_version "1.84.0"
 
 lane :deploy do 
   puts "current: " + Dir.pwd
