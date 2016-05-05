@@ -14,8 +14,8 @@ dependencies:
   pre:
     - sudo apt-get update
     - sudo apt-get install curl
-    - sudo \curl -L https://get.rvm.io | bash -s stable
-    - sudo source ~/.rvm/scripts/rvm
+    - sudo \curl -L https://get.rvm.io | bash -s stable --auto-dotfiles
+    - source ~/.rvm/scripts/rvm
     - sudo rvm requirements
     - sudo rvm install ruby
     - sudo rvm use ruby --default
