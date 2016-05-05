@@ -24,14 +24,15 @@ dependencies:
     - gem install bundler
     - gem install fastlane
     - gem install screengrab
-    #- sudo gem install supply
+    - gem install supply
   override:
     - bundle init
     - echo "gem 'fastlane', '1.85.0'" >> Gemfile
-    #- echo "gem 'supply', '0.6.2'" >> Gemfile
+    - echo "gem 'supply', '0.6.2'" >> Gemfile
     - echo "gem 'screengrab', '0.3.2'" >> Gemfile
     - bundle install --path ./gems
     - bundle install --path ./gems --deployment
+    - supply init
 
 test:
   pre:
