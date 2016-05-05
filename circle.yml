@@ -83,5 +83,5 @@ deployment:
         branch: master
         commands:
             #- bundle exec fastlane deploy
-            #- supply init
+            - supply init
             #- ./gradlew publishApkRelease
