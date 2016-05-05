@@ -1,6 +1,4 @@
 machine:
-  pre:
-    - rvm get stable --auto-dotfiles
   java:
     version: openjdk7
   ruby:
@@ -23,12 +21,11 @@ dependencies:
     #- echo y | android update sdk --no-ui --all --filter android-23
     #- echo y | android update sdk --no-ui --all --filter build-tools-23.0.2
     - source scripts/environmentSetup.sh && getAndroidSDK
-    - rvm use ruby-2.3.1 --default
     #- gem install bundler
     #- gem install fastlane
     #- sudo gem install supply
   override:
-    - sudo gem install screengrab
+    - gem install screengrab
     #- bundle init
     #- echo "gem 'fastlane', '1.85.0'" >> Gemfile
     #- echo "gem 'supply', '0.6.2'" >> Gemfile
