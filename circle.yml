@@ -1,4 +1,6 @@
 machine:
+  pre:
+    - rvm get stable --auto-dotfiles
   java:
     version: openjdk7
   ruby:
