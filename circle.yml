@@ -12,8 +12,8 @@ machine:
 
 dependencies:
   pre:
+    - echo "source ~/.profile" >> /home/ubuntu/.bashrc
     - cat /home/ubuntu/.bashrc
-    - cat /home/ubuntu/.bash_profile
     - wget "https://services.gradle.org/distributions/gradle-2.10-bin.zip"; unzip gradle-2.10-bin.zip
     #- echo y | android update sdk --no-ui --all --filter tool
     #- echo y | android update sdk --no-ui --all --filter extra-android-m2repository
@@ -23,17 +23,17 @@ dependencies:
     #- echo y | android update sdk --no-ui --all --filter android-23
     #- echo y | android update sdk --no-ui --all --filter build-tools-23.0.2
     - source scripts/environmentSetup.sh && getAndroidSDK
-    - gem install bundler
-    - gem install fastlane
+    #- gem install bundler
+    #- gem install fastlane
     #- sudo gem install supply
     - gem install screengrab
-  override:
-    - bundle init
-    - echo "gem 'fastlane', '1.85.0'" >> Gemfile
+  #override:
+    #- bundle init
+    #- echo "gem 'fastlane', '1.85.0'" >> Gemfile
     #- echo "gem 'supply', '0.6.2'" >> Gemfile
-    - echo "gem 'screengrab', '0.3.2'" >> Gemfile
-    - bundle install --path ./gems
-    - bundle install --path ./gems --deployment
+    #- echo "gem 'screengrab', '0.3.2'" >> Gemfile
+    #- bundle install --path ./gems
+    #- bundle install --path ./gems --deployment
 
 test:
   pre:
@@ -47,8 +47,8 @@ test:
     # unlock the emulator screen
     - sleep 30
     - adb shell input keyevent 82
-    - ./gradlew connectedAndroidTest --info:
-        timeout: 360
+    #- ./gradlew connectedAndroidTest --info:
+        #timeout: 360
   #override:
     # start the emulator
     #- emulator -avd circleci-android22 -no-audio -no-window:
@@ -69,7 +69,7 @@ test:
     #- adb -s emulator-5554 shell echo \$EXTERNAL_STORAGE
     - adb install $CIRCLE_ARTIFACTS/outputs/apk/app-debug.apk
     - adb shell am start -n "com.eurisko.testappgithub/com.eurisko.testappgithub.MainActivity" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER
-    #- screengrab --clear_previous_screenshots true --app_apk_path $CIRCLE_ARTIFACTS/outputs/apk/app-debug.apk --tests_apk_path $CIRCLE_ARTIFACTS/outputs/apk/app-debug-unaligned.apk --output_directory fastlane/metadata/android --verbose
+    - screengrab --clear_previous_screenshots true --app_apk_path $CIRCLE_ARTIFACTS/outputs/apk/app-debug.apk --tests_apk_path $CIRCLE_ARTIFACTS/outputs/apk/app-debug-unaligned.apk --output_directory /home/ubuntu/TestAppGithub/fastlane/metadata/android --verbose
 
 deployment:
     develop:
