@@ -66,7 +66,7 @@ test:
     # copy the build outputs to artifacts
     - cp -r app/build/outputs $CIRCLE_ARTIFACTS
     # copy the test results to the test results directory.
-    - cp -r app/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
+    #- cp -r app/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
     #- adb -s emulator-5554 shell echo \$EXTERNAL_STORAGE
     #- adb install $CIRCLE_ARTIFACTS/outputs/apk/app-debug.apk
     #- adb shell am start -n "com.eurisko.testappgithub/com.eurisko.testappgithub.MainActivity" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER
