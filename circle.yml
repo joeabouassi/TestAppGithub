@@ -14,12 +14,12 @@ dependencies:
   pre:
     - sudo apt-get update
     - sudo apt-get install curl
-    - \curl -L https://get.rvm.io | bash -s stable
-    - source ~/.rvm/scripts/rvm
-    - rvm requirements
-    - rvm install ruby
-    - rvm use ruby --default
-    - rvm rubygems current
+    - sudo \curl -L https://get.rvm.io | bash -s stable
+    - sudo source ~/.rvm/scripts/rvm
+    - sudo rvm requirements
+    - sudo rvm install ruby
+    - sudo rvm use ruby --default
+    - sudo rvm rubygems current
     - wget "https://services.gradle.org/distributions/gradle-2.10-bin.zip"; unzip gradle-2.10-bin.zip
     #- echo y | android update sdk --no-ui --all --filter tool
     #- echo y | android update sdk --no-ui --all --filter extra-android-m2repository
@@ -29,17 +29,17 @@ dependencies:
     #- echo y | android update sdk --no-ui --all --filter android-23
     #- echo y | android update sdk --no-ui --all --filter build-tools-23.0.2
     - source scripts/environmentSetup.sh && getAndroidSDK
-    - gem install bundler
-    - gem install fastlane
-    #- gem install screengrab
-    - gem install supply
+    #- gem install bundler
+    - sudo gem install fastlane
+    - sudo gem install screengrab
+    - sudo gem install supply
   override:
-    - bundle init
-    - echo "gem 'fastlane', '1.85.0'" >> Gemfile
-    - echo "gem 'supply', '0.6.2'" >> Gemfile
+    #- bundle init
+    #- echo "gem 'fastlane', '1.85.0'" >> Gemfile
+    #- echo "gem 'supply', '0.6.2'" >> Gemfile
     #- echo "gem 'screengrab', '0.3.2'" >> Gemfile
-    - bundle install --path ./gems
-    - bundle install --path ./gems --deployment
+    #- bundle install --path ./gems
+    #- bundle install --path ./gems --deployment
     - supply init
 
 test:
@@ -76,12 +76,12 @@ test:
     #- adb -s emulator-5554 shell echo \$EXTERNAL_STORAGE
     - adb install $CIRCLE_ARTIFACTS/outputs/apk/app-debug.apk
     - adb shell am start -n "com.eurisko.testappgithub/com.eurisko.testappgithub.MainActivity" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER
-    #- screengrab --clear_previous_screenshots true --app_apk_path $CIRCLE_ARTIFACTS/outputs/apk/app-debug.apk --tests_apk_path $CIRCLE_ARTIFACTS/outputs/apk/app-debug-unaligned.apk --output_directory /home/ubuntu/TestAppGithub/fastlane/metadata/android --verbose
+    - screengrab --clear_previous_screenshots true --app_apk_path $CIRCLE_ARTIFACTS/outputs/apk/app-debug.apk --tests_apk_path $CIRCLE_ARTIFACTS/outputs/apk/app-debug-unaligned.apk --output_directory /home/ubuntu/TestAppGithub/fastlane/metadata/android --verbose
 
 deployment:
     develop:
         branch: master
         commands:
-            - bundle exec fastlane deploy
+            #- bundle exec fastlane deploy
             #- supply init
             #- ./gradlew publishApkRelease
