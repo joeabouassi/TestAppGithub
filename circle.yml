@@ -1,6 +1,4 @@
 machine:
-  pre:
-    - sudo gem install screengrab
   java:
     version: openjdk7
   ruby:
@@ -26,8 +24,8 @@ dependencies:
     #- gem install bundler
     #- gem install fastlane
     #- sudo gem install supply
-  #override:
-    #- sudo gem install screengrab
+  override:
+    - sudo gem install screengrab
     #- bundle init
     #- echo "gem 'fastlane', '1.85.0'" >> Gemfile
     #- echo "gem 'supply', '0.6.2'" >> Gemfile
