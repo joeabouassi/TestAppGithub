@@ -24,6 +24,7 @@ dependencies:
     #- sudo gem install screengrab
     #- sudo gem install supply
     #- supply init
+    - wget "http://download.unity3d.com/download_unity/unity-editor-5.1.0f3+2015082501_amd64.deb"; echo y | sudo dpkg -i unity-editor-5.1.0f3+2015082501_amd64.deb
     #- wget "https://services.gradle.org/distributions/gradle-2.10-bin.zip"; unzip gradle-2.10-bin.zip
     #- echo y | android update sdk --no-ui --all --filter tool
     #- echo y | android update sdk --no-ui --all --filter extra-android-m2repository
