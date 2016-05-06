@@ -1,5 +1,9 @@
 # scripts/environmentSetup.sh
 
+function setAndroidSDK {
+  export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH"
+}
+
 function getAndroidSDK {
   export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH"
 
