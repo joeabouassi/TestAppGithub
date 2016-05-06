@@ -48,6 +48,7 @@ dependencies:
 
 test:
   pre:
+    - ./gradlew assembleDebug assembleAndroidTest
     - $ANDROID_HOME/tools/emulator -avd testAVD -no-skin -no-audio -no-window:
         background: true
         parallel: true
@@ -58,7 +59,6 @@ test:
     # unlock the emulator screen
     - sleep 30
     - adb shell input keyevent 82
-    - ./gradlew assembleDebug assembleAndroidTest
     - screengrab
     #- ./gradlew connectedAndroidTest -PdisablePreDex --info:
         #timeout: 360
