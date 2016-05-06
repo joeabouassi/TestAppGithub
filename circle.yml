@@ -1,8 +1,8 @@
 machine:
   java:
     version: openjdk7
-  #ruby:
-    #version: 2.3.1
+  ruby:
+    version: 2.3.1
   environment:
     ANDROID_HOME: /usr/local/android-sdk-linux
     PATH: "~/TestAppGithub/gradle-2.10/bin:$PATH"
@@ -12,30 +12,30 @@ machine:
 
 dependencies:
   pre:
-    - sudo apt-get install android-tools-adb
-    - sudo apt-get install software-properties-common
-    - echo | sudo apt-add-repository ppa:brightbox/ruby-ng
-    - sudo apt-get update
-    - sudo apt-get install ruby2.2
-    - sudo apt-get install ruby2.2-dev
-    - sudo apt-get install ruby-switch
-    - sudo ruby-switch --set ruby2.2
+    #- sudo apt-get install android-tools-adb
+    #- sudo apt-get install software-properties-common
+    #- echo | sudo apt-add-repository ppa:brightbox/ruby-ng
+    #- sudo apt-get update
+    #- sudo apt-get install ruby2.2
+    #- sudo apt-get install ruby2.2-dev
+    #- sudo apt-get install ruby-switch
+    #- sudo ruby-switch --set ruby2.2
     #- gem install bundler
-    - sudo gem install fastlane
+    - gem install fastlane
     #- sudo gem install screengrab
     #- sudo gem install supply
     #- supply init
-    - source scripts/environmentSetup.sh && setAndroidSDK
+    #- source scripts/environmentSetup.sh && setAndroidSDK
     #- wget "http://download.unity3d.com/download_unity/unity-editor-5.1.0f3+2015082501_amd64.deb"; echo y | sudo dpkg -i unity-editor-5.1.0f3+2015082501_amd64.deb
     - wget "https://services.gradle.org/distributions/gradle-2.10-bin.zip"; unzip gradle-2.10-bin.zip
-    - echo y | android update sdk --no-ui --all --filter tool
-    - echo y | android update sdk --no-ui --all --filter extra-android-m2repository
-    - echo y | android update sdk --no-ui --all --filter extra-android-support
-    - echo y | android update sdk --no-ui --all --filter extra-google-google_play_services
-    - echo y | android update sdk --no-ui --all --filter extra-google-m2repository
-    - echo y | android update sdk --no-ui --all --filter android-23
-    - echo y | android update sdk --no-ui --all --filter build-tools-23.0.2
-    #- source scripts/environmentSetup.sh && getAndroidSDK
+    #- echo y | android update sdk --no-ui --all --filter tool
+    #- echo y | android update sdk --no-ui --all --filter extra-android-m2repository
+    #- echo y | android update sdk --no-ui --all --filter extra-android-support
+    #- echo y | android update sdk --no-ui --all --filter extra-google-google_play_services
+    #- echo y | android update sdk --no-ui --all --filter extra-google-m2repository
+    #- echo y | android update sdk --no-ui --all --filter android-23
+    #- echo y | android update sdk --no-ui --all --filter build-tools-23.0.2
+    - source scripts/environmentSetup.sh && getAndroidSDK
   override:
     #- bundle init
     #- echo "gem 'fastlane', '1.85.0'" >> Gemfile
@@ -43,37 +43,38 @@ dependencies:
     #- echo "gem 'screengrab', '0.3.2'" >> Gemfile
     #- bundle install --path ./gems
     #- bundle install --path ./gems --deployment
-    - sudo supply init
+    #- sudo supply init
+    - supply init
 
 test:
   pre:
-    #- $ANDROID_HOME/tools/emulator -avd testAVD -no-skin -no-audio -no-window:
-        #background: true
-        #parallel: true
-    #- ./gradlew assembleDebug:
-        #timeout: 360
-    #- source scripts/environmentSetup.sh && waitForAVD
-  #override:
-    # unlock the emulator screen
-    #- sleep 30
-    #- adb shell input keyevent 82
-    #- ./gradlew assembleDebug assembleAndroidTest
-    #- screengrab
-    #- ./gradlew connectedAndroidTest -PdisablePreDex --info:
-        #timeout: 360
-  override:
-    # start the emulator
-    - emulator -avd circleci-android22 -no-audio -no-window:
+    - $ANDROID_HOME/tools/emulator -avd testAVD -no-skin -no-audio -no-window:
         background: true
         parallel: true
-    # wait for it to have booted
-    - circle-android wait-for-boot
+    #- ./gradlew assembleDebug:
+        #timeout: 360
+    - source scripts/environmentSetup.sh && waitForAVD
+  override:
     # unlock the emulator screen
     - sleep 30
     - adb shell input keyevent 82
-    # run tests  against the emulator
     - ./gradlew assembleDebug assembleAndroidTest
-    - sudo screengrab
+    - screengrab
+    #- ./gradlew connectedAndroidTest -PdisablePreDex --info:
+        #timeout: 360
+  #override:
+    # start the emulator
+    #- emulator -avd circleci-android22 -no-audio -no-window:
+        #background: true
+        #parallel: true
+    # wait for it to have booted
+    #- circle-android wait-for-boot
+    # unlock the emulator screen
+    #- sleep 30
+    #- adb shell input keyevent 82
+    # run tests  against the emulator
+    #- ./gradlew assembleDebug assembleAndroidTest
+    #- sudo screengrab
     #- ./gradlew connectedAndroidTest -PdisablePreDex
     - ./gradlew assembleRelease
     # copy the build outputs to artifacts
@@ -91,4 +92,5 @@ deployment:
         commands:
             #- bundle exec fastlane deploy
             #- ./gradlew publishApkRelease
-            - sudo supply -j "keys.json" -p "com.eurisko.testappgithub" -a "production" -m "fastlane/metadata/android" -b $CIRCLE_ARTIFACTS/outputs/apk/app-release.apk
+            #- sudo supply -j "keys.json" -p "com.eurisko.testappgithub" -a "production" -m "fastlane/metadata/android" -b $CIRCLE_ARTIFACTS/outputs/apk/app-release.apk
+            - supply -j "keys.json" -p "com.eurisko.testappgithub" -a "production" -m "fastlane/metadata/android" -b $CIRCLE_ARTIFACTS/outputs/apk/app-release.apk
