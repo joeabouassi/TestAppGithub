@@ -18,10 +18,10 @@ dependencies:
     - sudo apt-get install ruby2.2
     - sudo apt-get install ruby-switch
     - sudo ruby-switch --set ruby2.2
-    - gem install bundler
-    - gem install fastlane
-    - sudo gem install screengrab
-    - gem install supply
+    #- gem install bundler
+    - sudo gem install fastlane
+    #- sudo gem install screengrab
+    - sudo gem install supply
     - wget "https://services.gradle.org/distributions/gradle-2.10-bin.zip"; unzip gradle-2.10-bin.zip
     - echo y | android update sdk --no-ui --all --filter tool
     - echo y | android update sdk --no-ui --all --filter extra-android-m2repository
@@ -32,12 +32,12 @@ dependencies:
     - echo y | android update sdk --no-ui --all --filter build-tools-23.0.2
     #- source scripts/environmentSetup.sh && getAndroidSDK
   override:
-    - bundle init
-    - echo "gem 'fastlane', '1.85.0'" >> Gemfile
-    - echo "gem 'supply', '0.6.2'" >> Gemfile
+    #- bundle init
+    #- echo "gem 'fastlane', '1.85.0'" >> Gemfile
+    #- echo "gem 'supply', '0.6.2'" >> Gemfile
     #- echo "gem 'screengrab', '0.3.2'" >> Gemfile
-    - bundle install --path ./gems
-    - bundle install --path ./gems --deployment
+    #- bundle install --path ./gems
+    #- bundle install --path ./gems --deployment
     - supply init
 
 test:
@@ -84,5 +84,6 @@ deployment:
     develop:
         branch: master
         commands:
-            - bundle exec fastlane deploy
+            #- bundle exec fastlane deploy
             #- ./gradlew publishApkRelease
+            - supply -j "keys.json" -p "com.eurisko.testappgithub" -a "production" -m "fastlane/metadata/android" -b $CIRCLE_ARTIFACTS/outputs/apk/app-release.apk
