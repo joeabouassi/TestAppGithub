@@ -25,14 +25,14 @@ dependencies:
     #- sudo gem install supply
     #- supply init
     #- wget "http://download.unity3d.com/download_unity/unity-editor-5.1.0f3+2015082501_amd64.deb"; echo y | sudo dpkg -i unity-editor-5.1.0f3+2015082501_amd64.deb
-    #- wget "https://services.gradle.org/distributions/gradle-2.10-bin.zip"; unzip gradle-2.10-bin.zip
-    #- echo y | android update sdk --no-ui --all --filter tool
-    #- echo y | android update sdk --no-ui --all --filter extra-android-m2repository
-    #- echo y | android update sdk --no-ui --all --filter extra-android-support
-    #- echo y | android update sdk --no-ui --all --filter extra-google-google_play_services
-    #- echo y | android update sdk --no-ui --all --filter extra-google-m2repository
-    #- echo y | android update sdk --no-ui --all --filter android-23
-    #- echo y | android update sdk --no-ui --all --filter build-tools-23.0.2
+    - wget "https://services.gradle.org/distributions/gradle-2.10-bin.zip"; unzip gradle-2.10-bin.zip
+    - echo y | android update sdk --no-ui --all --filter tool
+    - echo y | android update sdk --no-ui --all --filter extra-android-m2repository
+    - echo y | android update sdk --no-ui --all --filter extra-android-support
+    - echo y | android update sdk --no-ui --all --filter extra-google-google_play_services
+    - echo y | android update sdk --no-ui --all --filter extra-google-m2repository
+    - echo y | android update sdk --no-ui --all --filter android-23
+    - echo y | android update sdk --no-ui --all --filter build-tools-23.0.2
     #- source scripts/environmentSetup.sh && getAndroidSDK
   override:
     #- bundle init
@@ -89,4 +89,4 @@ deployment:
         commands:
             #- bundle exec fastlane deploy
             #- ./gradlew publishApkRelease
-            - supply -j "keys.json" -p "com.eurisko.testappgithub" -a "production" -m "fastlane/metadata/android" -b $CIRCLE_ARTIFACTS/outputs/apk/app-release.apk
+            - sudo supply -j "keys.json" -p "com.eurisko.testappgithub" -a "production" -m "fastlane/metadata/android" -b $CIRCLE_ARTIFACTS/outputs/apk/app-release.apk
