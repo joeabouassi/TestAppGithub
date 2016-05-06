@@ -12,6 +12,16 @@ machine:
 
 dependencies:
   pre:
+    - sudo apt-get install software-properties-common
+    - echo | sudo apt-add-repository ppa:brightbox/ruby-ng
+    - sudo apt-get update
+    - sudo apt-get install ruby2.2
+    - sudo apt-get install ruby-switch
+    - sudo ruby-switch --set ruby2.2
+    - gem install bundler
+    - gem install fastlane
+    - sudo gem install screengrab
+    - gem install supply
     - wget "https://services.gradle.org/distributions/gradle-2.10-bin.zip"; unzip gradle-2.10-bin.zip
     - echo y | android update sdk --no-ui --all --filter tool
     - echo y | android update sdk --no-ui --all --filter extra-android-m2repository
@@ -21,15 +31,11 @@ dependencies:
     - echo y | android update sdk --no-ui --all --filter android-23
     - echo y | android update sdk --no-ui --all --filter build-tools-23.0.2
     #- source scripts/environmentSetup.sh && getAndroidSDK
-    - gem install bundler
-    - gem install fastlane
-    - sudo gem install screengrab
-    - gem install supply
   override:
     - bundle init
     - echo "gem 'fastlane', '1.85.0'" >> Gemfile
     - echo "gem 'supply', '0.6.2'" >> Gemfile
-    - echo "gem 'screengrab', '0.3.2'" >> Gemfile
+    #- echo "gem 'screengrab', '0.3.2'" >> Gemfile
     - bundle install --path ./gems
     - bundle install --path ./gems --deployment
     - supply init
