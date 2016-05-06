@@ -1,8 +1,8 @@
 machine:
   java:
     version: openjdk7
-  ruby:
-    version: 2.3.1
+  #ruby:
+    #version: 2.3.1
   environment:
     ANDROID_HOME: /usr/local/android-sdk-linux
     PATH: "~/TestAppGithub/gradle-2.10/bin:$PATH"
@@ -22,6 +22,7 @@ dependencies:
     #- sudo gem install fastlane
     - sudo gem install screengrab
     - sudo gem install supply
+    - supply init
     - wget "https://services.gradle.org/distributions/gradle-2.10-bin.zip"; unzip gradle-2.10-bin.zip
     - echo y | android update sdk --no-ui --all --filter tool
     - echo y | android update sdk --no-ui --all --filter extra-android-m2repository
@@ -31,14 +32,14 @@ dependencies:
     - echo y | android update sdk --no-ui --all --filter android-23
     - echo y | android update sdk --no-ui --all --filter build-tools-23.0.2
     #- source scripts/environmentSetup.sh && getAndroidSDK
-  override:
+  #override:
     #- bundle init
     #- echo "gem 'fastlane', '1.85.0'" >> Gemfile
     #- echo "gem 'supply', '0.6.2'" >> Gemfile
     #- echo "gem 'screengrab', '0.3.2'" >> Gemfile
     #- bundle install --path ./gems
     #- bundle install --path ./gems --deployment
-    - supply init
+    #- supply init
 
 test:
   pre:
