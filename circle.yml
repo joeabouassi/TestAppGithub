@@ -5,7 +5,7 @@ machine:
     #version: 2.3.1
   environment:
     ANDROID_HOME: /usr/local/android-sdk-linux
-    PATH: "$ANDROID_HOME/platform-tools:~/TestAppGithub/gradle-2.10/bin:$PATH"
+    PATH: "~/TestAppGithub/gradle-2.10/bin:$PATH"
     TERM: "dumb"
     ADB_INSTALL_TIMEOUT: "10"
     GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"'
