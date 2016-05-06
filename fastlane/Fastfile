@@ -39,7 +39,7 @@ lane :deploy do
   #Upload to Google Play 
   supply( 
     track: "production",
-    apk: '/home/ubuntu/TestAppGithub/app/build/outputs/apk/app-release.apk'
+    apk: ENV['CIRCLE_ARTIFACTS'] + "/outputs/apk/app-release.apk"
   ) 
   #Delete key files
   #remove_key 
