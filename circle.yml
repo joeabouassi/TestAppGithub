@@ -23,7 +23,7 @@ dependencies:
     - source scripts/environmentSetup.sh && getAndroidSDK
     - gem install bundler
     - gem install fastlane
-    - gem install screengrab
+    - sudo gem install screengrab
     - gem install supply
   override:
     - bundle init
