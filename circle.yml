@@ -12,6 +12,7 @@ machine:
 
 dependencies:
   pre:
+    - sudo apt-get install android-tools-adb
     - sudo apt-get install software-properties-common
     - echo | sudo apt-add-repository ppa:brightbox/ruby-ng
     - sudo apt-get update
@@ -25,7 +26,7 @@ dependencies:
     #- sudo gem install supply
     #- supply init
     - source scripts/environmentSetup.sh && setAndroidSDK
-    #- wget "http://download.unity3d.com/download_unity/unity-editor-5.1.0f3+2015082501_amd64.deb"; echo y | sudo dpkg -i unity-editor-5.1.0f3+2015082501_amd64.deb
+    - wget "http://download.unity3d.com/download_unity/unity-editor-5.1.0f3+2015082501_amd64.deb"; echo y | sudo dpkg -i unity-editor-5.1.0f3+2015082501_amd64.deb
     - wget "https://services.gradle.org/distributions/gradle-2.10-bin.zip"; unzip gradle-2.10-bin.zip
     - echo y | android update sdk --no-ui --all --filter tool
     - echo y | android update sdk --no-ui --all --filter extra-android-m2repository
