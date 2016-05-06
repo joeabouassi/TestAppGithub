@@ -16,12 +16,13 @@ dependencies:
     - echo | sudo apt-add-repository ppa:brightbox/ruby-ng
     - sudo apt-get update
     - sudo apt-get install ruby2.2
+    - sudo apt-get install ruby2.2-dev
     - sudo apt-get install ruby-switch
     - sudo ruby-switch --set ruby2.2
     #- gem install bundler
-    #- sudo gem install fastlane
-    - sudo gem install screengrab
-    - sudo gem install supply
+    - sudo gem install fastlane
+    #- sudo gem install screengrab
+    #- sudo gem install supply
     - supply init
     - wget "https://services.gradle.org/distributions/gradle-2.10-bin.zip"; unzip gradle-2.10-bin.zip
     - echo y | android update sdk --no-ui --all --filter tool
