@@ -19,8 +19,8 @@ dependencies:
     - sudo apt-get install ruby-switch
     - sudo ruby-switch --set ruby2.2
     #- gem install bundler
-    - sudo gem install fastlane
-    #- sudo gem install screengrab
+    #- sudo gem install fastlane
+    - sudo gem install screengrab
     - sudo gem install supply
     - wget "https://services.gradle.org/distributions/gradle-2.10-bin.zip"; unzip gradle-2.10-bin.zip
     - echo y | android update sdk --no-ui --all --filter tool
