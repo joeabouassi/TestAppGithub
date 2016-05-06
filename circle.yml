@@ -24,7 +24,7 @@ dependencies:
     #- sudo gem install screengrab
     #- sudo gem install supply
     #- supply init
-    - wget "http://download.unity3d.com/download_unity/unity-editor-5.1.0f3+2015082501_amd64.deb"; echo y | sudo dpkg -i unity-editor-5.1.0f3+2015082501_amd64.deb
+    #- wget "http://download.unity3d.com/download_unity/unity-editor-5.1.0f3+2015082501_amd64.deb"; echo y | sudo dpkg -i unity-editor-5.1.0f3+2015082501_amd64.deb
     #- wget "https://services.gradle.org/distributions/gradle-2.10-bin.zip"; unzip gradle-2.10-bin.zip
     #- echo y | android update sdk --no-ui --all --filter tool
     #- echo y | android update sdk --no-ui --all --filter extra-android-m2repository
@@ -41,7 +41,7 @@ dependencies:
     #- echo "gem 'screengrab', '0.3.2'" >> Gemfile
     #- bundle install --path ./gems
     #- bundle install --path ./gems --deployment
-    - supply init
+    - sudo supply init
 
 test:
   pre:
@@ -71,7 +71,7 @@ test:
     - adb shell input keyevent 82
     # run tests  against the emulator.
     - ./gradlew assembleDebug assembleAndroidTest
-    - screengrab
+    - sudo screengrab
     #- ./gradlew connectedAndroidTest -PdisablePreDex
     - ./gradlew assembleRelease
     # copy the build outputs to artifacts
