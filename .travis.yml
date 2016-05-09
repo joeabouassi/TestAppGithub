@@ -17,9 +17,9 @@ android:
 
 before_install:
    - rvm install 2.3.1
-   - gem install fastlane
+   - gem install fastlane -v 1.33.3
    - gem install fastlane_core -v 0.38.0
-   - gem uninstall fastlane_core -v 0.43.1
+   - gem uninstall fastlane_core -v 0.39.0
 
 before_script:
   #- supply init
