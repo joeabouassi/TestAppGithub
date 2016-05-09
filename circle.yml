@@ -59,7 +59,7 @@ test:
     # unlock the emulator screen
     - sleep 30
     - adb shell input keyevent 82
-    - screengrab
+    - screengrab --build_tools_version '23.0.2' --android_home $ANDROID_HOME
     #- ./gradlew connectedAndroidTest -PdisablePreDex --info:
         #timeout: 360
   #override:
