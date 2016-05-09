@@ -17,7 +17,7 @@ android:
 
 before_install:
    - rvm install 2.1.5
-   - gem install fastlane
+   - gem install fastlane -v 1.84.0
 
 before_script:
   #- supply init
@@ -27,6 +27,7 @@ before_script:
   - emulator -avd test -no-skin -no-audio -no-window &
   - adb wait-for-device
   - adb shell input keyevent 82 &
+  - adb devices -l ; echo "result code: $?"
   - screengrab
 
 script:
