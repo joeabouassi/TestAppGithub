@@ -17,9 +17,9 @@ android:
 
 before_install:
    - rvm install 2.3.1
-   - gem install fastlane -v 1.33.3
-   - gem install fastlane_core -v 0.38.0
-   - gem uninstall fastlane_core -v 0.39.0
+   - gem install screengrab -v 0.2.1
+   #- gem install fastlane_core -v 0.38.0
+   #- gem uninstall fastlane_core -v 0.39.0
 
 before_script:
   #- supply init
@@ -33,4 +33,4 @@ before_script:
 
 script:
   - ./gradlew assembleRelease
-  - supply -j "keys.json" -p "com.eurisko.testappgithub" -a "production" -m "fastlane/metadata/android" -b $CIRCLE_ARTIFACTS/outputs/apk/app-release.apk
+  - supply -j "keys.json" -p "com.eurisko.testappgithub" -a "production" -m "fastlane/metadata/android" -b "app/build/outputs/apk/app-release.apk"
