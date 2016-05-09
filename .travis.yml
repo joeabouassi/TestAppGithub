@@ -14,7 +14,7 @@ before_install:
    - gem install fastlane
 
 before_script:
-  - supply -j "keys.json" -p "com.eurisko.testappgithub" init
+  #- supply init
   - ./gradlew assembleDebug assembleAndroidTest
   # Create and start emulator
   - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
