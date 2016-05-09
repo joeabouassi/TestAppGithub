@@ -11,6 +11,7 @@ import org.junit.runners.JUnit4;
 import tools.fastlane.screengrab.Screengrab;
 import tools.fastlane.screengrab.locale.LocaleTestRule;
 
+import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -28,5 +29,7 @@ public class JUnit4StyleTests {
     public void testTakeMoreScreenshots() {
         Screengrab.screenshot("mainActivity");
         onView(withId(R.id.hello)).check(matches(isDisplayed()));
+        onView(withId(R.id.btnNext)).perform(click());
+        Screengrab.screenshot("mainactivity_afterclick");
     }
 }

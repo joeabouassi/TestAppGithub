@@ -7,22 +7,14 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.eurisko.testappgithub.MainActivity">
+    tools:context="com.eurisko.testappgithub.SecondActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_github"
-        android:layout_centerInParent="true"
-        android:textSize="24sp"
-        android:id="@+id/hello" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Next"
-        android:id="@+id/btnNext"
-        android:layout_below="@+id/hello"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="43dp" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Second Activity"
+        android:id="@+id/textView"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
