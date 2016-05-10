@@ -26,13 +26,26 @@ before_script:
   - supply init
   - ./gradlew assembleDebug assembleAndroidTest
   # Create and start emulator
-  - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
-  - emulator -avd test -no-skin -no-audio -no-window &
+  - echo no | android create avd --force -n testphone -t $ANDROID_TARGET --abi $ANDROID_ABI
+  - emulator -avd testphone -no-skin -no-audio -no-window &
   - source scripts/environmentSetup.sh && waitForAVD
   #- adb wait-for-device
   - adb shell input keyevent 82
   - screengrab
-
+  - adb -s emulator-5554 emu kill
+  - echo no | android create avd --force -n testtablet7 -t $ANDROID_TARGET --abi $ANDROID_ABI --skin 800x1280
+  - emulator -avd testtablet7 -no-skin -no-audio -no-window &
+  - source scripts/environmentSetup.sh && waitForAVD
+  #- adb wait-for-device
+  - adb shell input keyevent 82
+  - screengrab -d "sevenInch"
+  - adb -s emulator-5554 emu kill
+  - echo no | android create avd --force -n testtablet10 -t $ANDROID_TARGET --abi $ANDROID_ABI --skin 1600x2560
+  - emulator -avd testtablet10 -no-skin -no-audio -no-window &
+  - source scripts/environmentSetup.sh && waitForAVD
+  #- adb wait-for-device
+  - adb shell input keyevent 82
+  - screengrab -d "tenInch"
 script:
   - ./gradlew assembleRelease
   - supply -j "keys.json" -p "com.eurisko.testappgithub" -a "production" -m "fastlane/metadata/android" -b "app/build/outputs/apk/app-release.apk"
