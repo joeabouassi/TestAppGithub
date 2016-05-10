@@ -18,13 +18,11 @@ android:
 before_install:
    - rvm install 2.3.1
    - gem install screengrab
-   - gem install supply
-   #- gem install fastlane_core -v 0.38.0
-   #- gem uninstall fastlane_core -v 0.39.0
+   - gem install supply -v 0.5
+   - gem install fastlane_core -v 0.38.0
+   - echo y | gem uninstall fastlane_core -v 0.43.1
 
 before_script:
-  - ls
-  - pwd
   - supply init
   - ./gradlew assembleDebug assembleAndroidTest
   # Create and start emulator
