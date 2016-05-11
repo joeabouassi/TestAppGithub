@@ -28,7 +28,7 @@ before_script:
   - supply init
   - android list device
   - ./gradlew assembleDebug assembleAndroidTest
-  # Create and start emulator
+  # Create and start phone emulator
   - echo no | android create avd --force -n testphone -t $ANDROID_TARGET --abi $ANDROID_ABI
   - emulator -avd testphone -no-skin -no-audio -no-window &
   - source scripts/environmentSetup.sh && waitForAVD
@@ -36,6 +36,7 @@ before_script:
   - adb shell input keyevent 82
   - screengrab
   - adb -s emulator-5554 emu kill
+  # Create and start 7" tablet emulator
   - echo no | android create avd --force -n testtablet7 -t $ANDROID_TARGET --abi $ANDROID_ABI -d 28
   - emulator -avd testtablet7 -no-skin -no-audio -no-window &
   - source scripts/environmentSetup.sh && waitForAVD
@@ -43,6 +44,7 @@ before_script:
   - adb shell input keyevent 82
   - screengrab -d "sevenInch"
   - adb -s emulator-5554 emu kill
+  # Create and start 10" tablet emulator
   - echo no | android create avd --force -n testtablet10 -t $ANDROID_TARGET --abi $ANDROID_ABI -d 29
   - emulator -avd testtablet10 -no-skin -no-audio -no-window &
   - source scripts/environmentSetup.sh && waitForAVD
