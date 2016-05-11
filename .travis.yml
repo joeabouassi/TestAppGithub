@@ -40,7 +40,6 @@ before_script:
   - echo no | android create avd --force -n testtablet7 -t $ANDROID_TARGET --abi $ANDROID_ABI -d 28
   - emulator -avd testtablet7 -no-skin -no-audio -no-window &
   - source scripts/environmentSetup.sh && waitForAVD
-  #- adb wait-for-device
   - adb shell input keyevent 82
   - screengrab -d "sevenInch"
   - adb -s emulator-5554 emu kill
@@ -48,7 +47,6 @@ before_script:
   - echo no | android create avd --force -n testtablet10 -t $ANDROID_TARGET --abi $ANDROID_ABI -d 29
   - emulator -avd testtablet10 -no-skin -no-audio -no-window &
   - source scripts/environmentSetup.sh && waitForAVD
-  #- adb wait-for-device
   - adb shell input keyevent 82
   - screengrab -d "tenInch"
 script:
