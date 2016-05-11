@@ -18,7 +18,7 @@ android:
 before_install:
    - rvm install 2.3.1
    - gem install fastlane
-   - update_fastlane
+   - fastlane update_fastlane
    #- gem install screengrab -v 0.3.2
    #- gem install supply -v 0.5.2
    #- gem install fastlane_core -v 0.38.0
