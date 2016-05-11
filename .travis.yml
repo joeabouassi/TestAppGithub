@@ -28,7 +28,7 @@ before_script:
   - supply init
   - android list device
   - ./gradlew assembleDebug assembleAndroidTest
-  # Create and start phone emulator
+  # Create and start Phone emulator
   - echo no | android create avd --force -n testphone -t $ANDROID_TARGET --abi $ANDROID_ABI
   - emulator -avd testphone -no-skin -no-audio -no-window &
   - source scripts/environmentSetup.sh && waitForAVD
