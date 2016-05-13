@@ -17,11 +17,11 @@ android:
 
 before_install:
    - rvm install 2.3.1
-   #- gem install fastlane
-   - gem install screengrab -v 0.3.2
-   - gem install supply -v 0.5.2
-   - gem install fastlane_core -v 0.38.0
-   - echo y | gem uninstall fastlane_core -v $(gem list | grep '^fastlane_co' | cut -d\( -f2- | cut -d\) -f1)
+   - gem install fastlane
+   #- gem install screengrab -v 0.3.2
+   #- gem install supply -v 0.5.2
+   #- gem install fastlane_core -v 0.38.0
+   #- echo y | gem uninstall fastlane_core -v $(gem list | grep '^fastlane_co' | cut -d\( -f2- | cut -d\) -f1)
 
 before_script:
   - supply init
